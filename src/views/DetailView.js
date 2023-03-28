@@ -64,7 +64,7 @@ function DetailView() {
       },
     ].sort((a, b) => a.id - b.id);
 
-    const response = await fetch(
+    await fetch(
       `https://641f31fead55ae01ccb85f06.mockapi.io/api/list/${params.id}`,
       {
         method: "PUT",
@@ -97,10 +97,6 @@ function DetailView() {
       .then((data) => {})
       .catch((err) => console.log(err));
   }
-
-  const handleChange = (event) => {
-    setNameTodo(event.target.value);
-  };
 
   return (
     <div className="App">
@@ -181,25 +177,6 @@ function DetailView() {
             </button>
           </div>
         </form>
-
-        {/* <form>
-              <h2 className="text-[16px] mb-[10px] text-white">
-                Create your todo!
-              </h2>
-           
-              <button
-                onClick={createTodo}
-                className="btn btn-outline btn-info btn-sm mr-[10px]"
-              >
-                CREATE
-              </button>
-            </form> */}
-
-        {/* <ul className="flex flex-col justofy-center items-center w-[100%] border border-[#152532] w-[100%]">
-          <li className="hover:bg-[#235243] hover:text-white w-[100%] border-b border-[#152532] last:border-none">
-            {todo.name}
-          </li>
-        </ul> */}
       </div>
     </div>
   );
