@@ -41,7 +41,7 @@ function DetailView() {
     return () => {
       isUnmount = true;
     };
-  }, []);
+  }, [params]);
 
   const navigate = useNavigate();
   const goBack = () => {

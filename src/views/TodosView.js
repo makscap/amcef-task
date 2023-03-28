@@ -45,7 +45,7 @@ function TodosView() {
     return () => {
       isUnmount = true;
     };
-  }, []);
+  }, [params]);
 
   const sortBy = (cause) => {
     switch (cause) {
@@ -129,21 +129,21 @@ function TodosView() {
           </button>
           <div className="tabs mr-[10px]">
             <a
-              href="#"
+              href="/#"
               className="tab tab-bordered tab-active"
               onClick={sortBy}
             >
               All
             </a>
             <a
-              href="#"
+              href="/#"
               className="tab tab-bordered "
               onClick={() => sortBy("active")}
             >
               Active
             </a>
             <a
-              href="#"
+              href="/#"
               className="tab tab-bordered"
               onClick={() => sortBy("completed")}
             >
