@@ -128,30 +128,26 @@ function TodosView() {
             BACK
           </button>
           <div className="tabs mr-[10px]">
-            <a
-              href="/#"
-              className="tab tab-bordered tab-active"
-              onClick={sortBy}
-            >
+            <button className="tab tab-bordered tab-active" onClick={sortBy}>
               All
-            </a>
-            <a
-              href="/#"
+            </button>
+            <button
+              type="button"
               className="tab tab-bordered "
               onClick={() => sortBy("active")}
             >
               Active
-            </a>
-            <a
-              href="/#"
+            </button>
+            <button
+              type="button"
               className="tab tab-bordered"
               onClick={() => sortBy("completed")}
             >
               Completed
-            </a>
+            </button>
           </div>
-
           <button
+            type="button"
             onClick={() => setIsOpenModal(true)}
             className="btn btn-outline btn-success btn-sm "
           >
