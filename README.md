@@ -68,3 +68,85 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+<!-- Schema for mockapi.io: -->
+
+<!-- [
+{
+"id": "1",
+"name": "My list",
+"date": 1680001891,
+"todos": [
+{
+"id": "1",
+"name": "Task 1",
+"text": "Lorem lorem",
+"date": 1680001891,
+"isCompleted": false
+},
+{
+"id": "2",
+"name": "Tasssk 1",
+"text": "Lorem lorem",
+"date": 1680001891,
+"isCompleted": true
+},
+{
+"id": "3",
+"name": "Tasssk 2",
+"text": "Lorem lorem",
+"date": 1680001891,
+"isCompleted": false
+},
+{
+"id": "4",
+"name": "Tasssk 3",
+"text": "Lorem lorem",
+"date": 1680001891,
+"isCompleted": false
+},
+{
+"id": "5",
+"name": "Tasssk 4",
+"text": "Lorem lorem",
+"date": 1680001891,
+"isCompleted": true
+}
+]
+},
+{
+"id": "1",
+"name": "My list",
+"date": 1680001891,
+"todos": [
+{
+"id": "1",
+"name": "Task 1",
+"text": "Lorem lorem",
+"date": 1680001891,
+"isCompleted": false
+},
+{
+"id": "2",
+"name": "Tasssk 2",
+"text": "Lorem lorem",
+"date": 1680001891,
+"isCompleted": true
+},
+{
+"id": "3",
+"name": "Tasssk 33",
+"text": "Lorem lorem",
+"date": 1680001891,
+"isCompleted": false
+},
+{
+"id": "4",
+"name": "Tasssk 444",
+"text": "Lorem lorem",
+"date": 1680001891,
+"isCompleted": false
+}
+]
+}
+] -->

@@ -11,7 +11,7 @@ function ListView() {
   useEffect(() => {
     let isUnmount = false;
 
-    fetch("https://641f31fead55ae01ccb85f06.mockapi.io/api/list", {
+    fetch(`${process.env.REACT_APP_BASE_URL}`, {
       method: "GET",
       headers: { "Content-Type": "application/json" },
     })
@@ -33,7 +33,7 @@ function ListView() {
   };
 
   function createTodo() {
-    fetch("https://641f31fead55ae01ccb85f06.mockapi.io/api/list", {
+    fetch(process.env.REACT_APP_BASE_URL, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -47,7 +47,7 @@ function ListView() {
   }
 
   function deleteList(id) {
-    fetch(`https://641f31fead55ae01ccb85f06.mockapi.io/api/list/${id}`, {
+    fetch(`${process.env.REACT_APP_BASE_URL}/${id}`, {
       method: "DELETE",
       headers: { "Content-Type": "application/json" },
     })

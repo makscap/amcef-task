@@ -3,16 +3,16 @@ import { useNavigate, useParams } from "react-router-dom";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import { v4 as uuid } from "uuid";
 import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
 import Header from "../components/Header";
 import Todos from "../components/Todos";
+import "react-datepicker/dist/react-datepicker.css";
 
 function TodosView() {
   const [selectedTodo, setSelectedTodo] = useState([]);
   const [todos, setTodos] = useState([]);
   const [isOpenModal, setIsOpenModal] = useState(false);
-  const [nameTodo, setNameTodo] = useState(false);
-  const [textTodo, setTextTodo] = useState(false);
+  const [nameTodo, setNameTodo] = useState("Empty");
+  const [textTodo, setTextTodo] = useState("Empty");
   const [searchInput, setSearchInput] = useState("");
   const [filteredResults, setFilteredResults] = useState([]);
   const [startDate, setStartDate] = useState(new Date());
@@ -28,7 +28,7 @@ function TodosView() {
   useEffect(() => {
     let isUnmount = false;
 
-    fetch("https://641f31fead55ae01ccb85f06.mockapi.io/api/list", {
+    fetch(`${process.env.REACT_APP_BASE_URL}`, {
       method: "GET",
       headers: { "Content-Type": "application/json" },
     })
@@ -37,7 +37,11 @@ function TodosView() {
         if (!isUnmount) {
           setSelectedTodo(data[params.id - 1]);
           setTodos(data[params.id - 1].todos);
-          setFilteredResults(data[params.id - 1].todos);
+          setFilteredResults(
+            data[params.id - 1].todos.sort(
+              (a, b) => a.isCompleted - b.isCompleted
+            )
+          );
         }
       })
       .catch((err) => console.log(err));
@@ -68,7 +72,7 @@ function TodosView() {
   };
 
   function createTodo(name) {
-    fetch(`https://641f31fead55ae01ccb85f06.mockapi.io/api/list/${params.id}`, {
+    fetch(`${process.env.REACT_APP_BASE_URL}/${params.id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -156,7 +160,7 @@ function TodosView() {
         </div>
 
         <div className="flex justify-center ">
-          {todos.length > 0 && <Todos data={filteredResults} />}
+          {todos && <Todos data={filteredResults} />}
         </div>
       </div>
 
@@ -177,8 +181,10 @@ function TodosView() {
                     Name:
                   </span>
                   <input
-                    type="name"
+                    type="text"
                     name="name"
+                    minLength="3"
+                    maxLength="20"
                     onChange={handleChange}
                     className="bg-white border border-black p-[5px]"
                   ></input>
@@ -190,8 +196,9 @@ function TodosView() {
                     Text:
                   </span>
                   <textarea
-                    type="name"
+                    type="text"
                     name="text"
+                    minLength="1"
                     onChange={handleChangeText}
                     className="bg-white border border-black p-[5px]"
                   ></textarea>

@@ -16,7 +16,7 @@ function DetailView() {
   useEffect(() => {
     let isUnmount = false;
 
-    fetch("https://641f31fead55ae01ccb85f06.mockapi.io/api/list", {
+    fetch(process.env.REACT_APP_BASE_URL, {
       method: "GET",
       headers: { "Content-Type": "application/json" },
     })
@@ -64,17 +64,14 @@ function DetailView() {
       },
     ].sort((a, b) => a.id - b.id);
 
-    await fetch(
-      `https://641f31fead55ae01ccb85f06.mockapi.io/api/list/${params.id}`,
-      {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: selectedList.name,
-          todos: sortArr,
-        }),
-      }
-    )
+    await fetch(`${process.env.REACT_APP_BASE_URL}/${params.id}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        name: selectedList.name,
+        todos: sortArr,
+      }),
+    })
       .then((res) => res.json())
       .then((data) => {})
       .catch((err) => console.log(err));
@@ -85,7 +82,7 @@ function DetailView() {
   function deleteTodo() {
     const filterTodo = selectedList.todos.filter((e) => e.id !== params.todoId);
 
-    fetch(`https://641f31fead55ae01ccb85f06.mockapi.io/api/list/${params.id}`, {
+    fetch(`${process.env.REACT_APP_BASE_URL}/${params.id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
